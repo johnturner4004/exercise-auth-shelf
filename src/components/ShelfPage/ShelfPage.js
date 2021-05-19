@@ -1,8 +1,12 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 
 function ShelfPage() {
-  const list = useSelector(store => store.listReducer);
+  const dispatch = useDispatch();
+  const list = useSelector(store => store.listReducer.data);
+  useEffect(() => {
+    dispatch({type: 'GET_ITEMS'});
+  }, [list]);
   return (
     <div className="container">
       <h2>Shelf</h2>
