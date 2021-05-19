@@ -4,6 +4,12 @@ import {useSelector, useDispatch} from 'react-redux';
 function ShelfPage() {
   const dispatch = useDispatch();
   const list = useSelector(store => store.listReducer.data);
+  const user = useSelector(store =>store.user);
+
+  function handleDelete(id) {
+    console.log(id);
+    
+  }
 
   //Gets the list on page load
   useEffect(() => {
@@ -15,7 +21,12 @@ function ShelfPage() {
       <p>All of the available items can be seen here.</p>
       {list ? <ul>
         {list.map((item) => 
-          <li key={item.id}>{item.description}</li>  
+        <>
+          <li key={item.id}>{item.description}</li>
+          {(item && item.user_id === user.id) ? 
+          <button key={item.id} value={item.id} onClick={(event) => handleDelete(event.target.value)} >Delete</button> 
+          : '' }
+        </>
         )}
       </ul> : ''}
     </div>
