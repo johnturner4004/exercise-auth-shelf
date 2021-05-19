@@ -6,7 +6,8 @@ function ShelfPage() {
   const list = useSelector(store => store.listReducer.data);
   useEffect(() => {
     dispatch({type: 'GET_ITEMS'});
-  }, [list]);
+  }, []);
+
   return (
     <div className="container">
       <h2>Shelf</h2>
