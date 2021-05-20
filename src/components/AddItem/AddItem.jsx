@@ -20,7 +20,7 @@ function AddItem() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch({type: 'FETCH_ADDING_ITEM', payload: addingItem});
+        dispatch({type: 'ADDING_NEW_ITEM', payload: addingItem});
     }
 
 

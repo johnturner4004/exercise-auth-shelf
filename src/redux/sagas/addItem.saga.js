@@ -1,16 +1,12 @@
 import axios from "axios";
 import { put, takeEvery } from "redux-saga/effects";
 
-
-// Gets the item from the database
-
-
 // Adds new item entry
 
 function* AddNewItem(action) {
     try {
         const response = yield axios.post(`/api/shelf/`, action.payload);
-        yield put ({type: 'FETCH_ADDING_ITEM'});
+        yield put ({type: 'GET_ITEMS'});
     } catch (error) {
         console.log('Failed to get new item', error);
     }
