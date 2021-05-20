@@ -19,13 +19,13 @@ router.get('/', (req, res) => {
 /**
  * Add an item for the logged in user to the shelf
  */
-router.post('/', (req, res) => {
-  let queryText = `INSERT INTO "items" ("description", "image_url", "user_id") VALUES ($1, $2, $3);`
-  pool.query(queryText)
+router.post('/', (req, res) => {  
+  let queryText = `INSERT INTO "item" ("description", "image_url", "user_id") VALUES ($1, $2, $3);`;
+  pool.query(queryText, [req.body.description, req.body.url, req.body.user_id])
   .then((result) => {
-    res.send(result.rows);
+    res.sendStatus(201);
   }).catch((error) => {
-    console.log('ERROR IN ADD ITEM POST');
+    console.log('ERROR IN ADD ITEM POST', error);
     res.sendStatus(500);
   })
   // endpoint functionality
