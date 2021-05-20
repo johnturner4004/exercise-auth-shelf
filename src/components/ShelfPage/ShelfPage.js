@@ -8,7 +8,7 @@ function ShelfPage() {
   const user = useSelector(store =>store.user);
 
   function handleDelete(id) {
-    console.log(id);
+    dispatch({type: 'DELETE_ITEM', payload: id})
     
   }
 
