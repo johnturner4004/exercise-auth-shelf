@@ -23,12 +23,12 @@ function ShelfPage() {
       <p>All of the available items can be seen here.</p>
       {list ? <ul>
         {list.map((item) => 
-        <>
-          <li key={item.id}>{item.description}</li>
+        <div key={item.id}>
+          <li >{item.description}</li>
           {(item && item.user_id === user.id) ? 
-          <button key={item.id} value={item.id} onClick={(event) => handleDelete(event.target.value)} >Delete</button> 
+          <button value={item.id} onClick={(event) => handleDelete(event.target.value)} >Delete</button> 
           : '' }
-        </>
+        </div>
         )}
       </ul> : ''}
     </div>
